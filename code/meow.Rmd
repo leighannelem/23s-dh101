@@ -1,0 +1,82 @@
+---
+title: "dh101 week 3 disc"
+author: "405792763 - Leigh Anne LeMoine"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+country <- read.csv("Gender_StatsCountry.csv")
+head(country)
+```
+
+```{r}
+country_series <- read.csv("Gender_StatsCountry-Series.csv")
+country_series
+```
+
+```{r}
+series_time <- read.csv("Gender_StatsSeries-Time.csv")
+series_time
+```
+```{r}
+context_ind <- read.csv("Contextual Indicators.csv")
+head(context_ind)
+```
+
+
+```{r}
+grad_field <- read.csv("Share of graduates by field, female (%).csv")
+head(grad_field)
+```
+
+```{r}
+entrp <- read.csv("Entrepreneurship.csv")
+head(entrp)
+```
+
+source: https://genderdata.worldbank.org/topics/entrepreneurship 
+
+
+```{r}
+entrp_ind <- unique(entrp[,1])
+entrp_ind
+```
+
+
+```{r}
+write.table(entrp_ind, file = “entrp_ind.txt”, sep = “”)
+```
+
+Source: https://genderdata.worldbank.org/topics/employment-and-time-use
+
+
+```{r}
+emplyt_time <- read.csv("Employment and Time Use.csv")
+head(emplyt_time)
+unique(emplyt_time[,1])
+```
+
+```{r}
+edu <- read.csv("Education.csv")
+head(edu)
+unique(edu[,1])
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
