@@ -1,0 +1,60 @@
+---
+title: "more scrapwork :3"
+author: "405792763 - Leigh Anne LeMoine"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Load in the datasets: 
+```{r}
+entrep <- read.csv("/Users/leighannelemoine/Documents/UCLA/2023-spring/dgthum-101/project/23s-dh101/raw_data/entrepreneurship/Entrepreneurship.csv")
+edu <- read.csv("/Users/leighannelemoine/Documents/UCLA/2023-spring/dgthum-101/project/23s-dh101/raw_data/education/Education.csv")
+employ <- read.csv("/Users/leighannelemoine/Documents/UCLA/2023-spring/dgthum-101/project/23s-dh101/raw_data/employment_and_time_use/Employment\ and\ Time\ Use.csv")
+# unique(entrep$Indicator.Name)
+# unique(edu$Indicator.Name)
+# unique(employ$Indicator.Name)
+```
+
+Function 
+
+```{r}
+# df = dataset we're using
+# name = desired indicator (as a character)
+
+df_get <- function(df, name) {
+  # split up the dataframe (turns into a list)
+  list_split <- split(df, f = df$Indicator.Name)
+  
+  # get item in list corresponding to indicator name
+  list_ind <- list_split[name]
+  
+  # get df from that list
+  df_ind <<- list_split[[name]][3:6]
+}
+```
+
+```{r}
+share_fem_dir <- df_get(entrep, "Share of female directors (% of total directors)")
+summary(share_fem_dir)
+```
+
+```{r}
+library(reshape2)
+dcast(share_fem_dir, Country.Code ~ Year)
+```
+
+
+```{r}
+# "Employment in agriculture, female (% of female employment) (modeled ILO estimate)"
+
+empl_agr <- df_get(employ, "Employment in agriculture, female (% of female employment) (modeled ILO estimate)")
+head(empl_agr)
+dcast(empl_agr, Country.Code ~ Year)
+```
+
+
